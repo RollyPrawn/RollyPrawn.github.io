@@ -120,7 +120,8 @@ function showStartInstructions() {
     ctx.textAlign = "center";
     ctx.font = "35px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText("PRESS ENTER TO START", width / 2, height / 2);
+    ctx.fillText("Use LEFT and RIGHT keys to move.", width / 2, height / 2);
+    ctx.fillText("Hit ENTER to begin!", width / 2, height / 1.6);
 
 }
 
@@ -379,7 +380,7 @@ function start_update() {
 	showStartInstructions();
     }
 
-    instructionsShowing = !instructionsShowing;
+    //instructionsShowing = !instructionsShowing;
     
 }
 
