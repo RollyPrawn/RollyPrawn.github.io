@@ -1,0 +1,11 @@
+-- Make the Arkanoid and Start classes inherit from a GameWindow class
+-- Make the Ball and Paddle classes inherit from a Sprite class
+-- Make physics engine class to handle collisions etc.
+-- Make it configurable in the start screen.
+-- Add some arcade sounds.
+-- Add some musak (Jazz Suite midi).
+-- Touch screen functionality.
+
+-- Make an interactive ideal gas sim.
+-- Make an interactive orbit sim.
+-- Make an interactive Saturn's rings sim.
