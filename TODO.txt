@@ -1,9 +1,0 @@
--- Make a Game View class, with init and update methods.
--- Add a game over screen.
--- Make it configurable in the start screen.
--- Add some arcade sounds.
--- Add some musak (Jazz Suite midi).
-
--- Make an interactive ideal gas sim.
--- Make an interactive orbit sim.
--- Make an interactive Saturn's rings sim.
