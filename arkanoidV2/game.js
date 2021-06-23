@@ -2,6 +2,7 @@ let Arkanoid;
 let Start;
 let ctx;
 let gravity = 0.05;
+//let gravity = 0;
 let tileSize = 20;
 
 var Keys = {

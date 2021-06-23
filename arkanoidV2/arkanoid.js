@@ -75,11 +75,14 @@ class ArkanoidScreen {
 	this.paddle = new Paddle({x : this.width / 2, y : Math.floor(this.height * 0.9)}, "red");	
 	
 	for (let i = 0; i < this.ballMultiplicity; i++) {
-
-	    this.ballList[i] = new Ball(randomSpawnLocation(this.width, this.height, tileSize), "blue");
-	    //ball = new Ball(spawnLocation(this.width / 2, yPos = Math.floor(this.height * 0.1)), "blue");
-	
+	    
+	    this.ballList[i] = new Ball(randomSpawnLocation(this.width, this.height, tileSize), "blue");	   
+	    
 	}
+	
+	/*this.ballList[1] = new Ball(spawnLocation(this.width / 4, Math.floor(this.height * 0.1)), "green");
+	this.ballList[2] = new Ball(spawnLocation(this.width / 2, Math.floor(this.height * 0.1)), "blue");*/
+	
     }
 
     // Updating the frame using the main game logic
@@ -105,7 +108,47 @@ class ArkanoidScreen {
 	    ball.move();
 	    ball.gravitate();
 
-	    // Collision handling
+	    // Collisions between balls
+	    for (const [j, ball2] of Object.entries(this.ballList)) {
+		
+		if (i == j) {continue}
+		else if (distance({'x' : ball.x, 'y' : ball.y},
+				  {'x' : ball2.x, 'y' : ball2.y}) <
+			 (ball.radius + ball2.radius)) {
+		    
+		    let vx1 = elasticLinearCollisionV1(ball.mass,
+							 ball2.mass,
+							 ball.velX,
+							 ball2.velX
+							)
+		    let vx2 = elasticLinearCollisionV2(ball.mass,
+							  ball2.mass,
+							  ball.velX,
+							  ball2.velX
+							 )
+
+		    let vy1 = elasticLinearCollisionV1(ball.mass,
+							 ball2.mass,
+							 ball.velY,
+							 ball2.velY
+							)
+		    let vy2 = elasticLinearCollisionV2(ball.mass,
+							  ball2.mass,
+							  ball.velY,
+							  ball2.velY
+						      )
+		    ball.velX = vx1;
+		    ball2.velX = vx2;
+		    
+		    ball.velY = vy1;
+		    ball2.velY = vy2;
+		    
+		    break;
+
+		}		
+	    }
+	    
+	    // Collisions between balls and paddle
 	    if ((ball.y > this.paddle.y - 1 * tileSize) &
 		(ball.x < this.paddle.x + Math.floor(this.paddle.width * tileSize) &
 		 ball.x > this.paddle.x - Math.floor(this.paddle.width)))

@@ -6,6 +6,9 @@ class Ball {
 
 	this.color = color;
 	this.elasticity = 1.05;
+	//this.elasticity = 1.0;
+	this.mass = 1;
+	this.radius = 1.5 * tileSize / 2;
         this.velX = Math.random() * 2 - 1;
         this.velY = Math.random() * 2 - 1;
         this.x = pos.x;
@@ -13,11 +16,12 @@ class Ball {
 
     }
 
-    // Drawing the paddle on the canvas.
+    // Drawing the ball on the canvas.
     draw() {
 
         ctx.beginPath();
-        ctx.rect(this.x, this.y, tileSize, tileSize);
+        //ctx.rect(this.x, this.y, tileSize, tileSize);
+	ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
         ctx.fillStyle = this.color;
         ctx.fill();
         ctx.strokeStyle = "black";
@@ -27,7 +31,7 @@ class Ball {
 
     }
 
-    // Moving the paddle by updating position.
+    // Moving the ball by updating position.
     move() {
 
         // Movement 
